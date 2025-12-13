@@ -4,11 +4,13 @@ namespace App\Livewire\Management;
 
 use Livewire\Component;
 use Filament\Tables\Table;
+use Filament\Actions\Action;
 use App\Models\PaymentMethod;
 use Illuminate\Contracts\View\View;
 use Filament\Actions\BulkActionGroup;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Schemas\Contracts\HasSchemas;
@@ -41,7 +43,15 @@ class ListPaymentMethods extends Component implements HasActions, HasSchemas, Ha
                 //
             ])
             ->recordActions([
-                //
+                Action::make('delete')
+                    ->requiresConfirmation()
+                    ->color('danger')
+                    ->action(fn (PaymentMethod $record) => $record->delete())
+                    ->successNotification(
+                        Notification::make()
+                            ->title('Payment Method Deleted successfully')
+                            ->success()
+                    )
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

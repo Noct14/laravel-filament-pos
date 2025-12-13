@@ -5,10 +5,12 @@ namespace App\Livewire\Customer;
 use Livewire\Component;
 use App\Models\Customer;
 use Filament\Tables\Table;
+use Filament\Actions\Action;
 use Illuminate\Contracts\View\View;
 use Filament\Actions\BulkActionGroup;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Schemas\Contracts\HasSchemas;
@@ -41,7 +43,15 @@ class ListCustomers extends Component implements HasActions, HasSchemas, HasTabl
                 //
             ])
             ->recordActions([
-                //
+                Action::make('delete')
+                    ->requiresConfirmation()
+                    ->color('danger')
+                    ->action(fn (Customer $record) => $record->delete())
+                    ->successNotification(
+                        Notification::make()
+                            ->title('Customer Deleted successfully')
+                            ->success()
+                    )
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
