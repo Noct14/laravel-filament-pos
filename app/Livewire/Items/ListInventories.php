@@ -2,18 +2,19 @@
 
 namespace App\Livewire\Items;
 
+use Livewire\Component;
 use App\Models\Inventory;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\Concerns\InteractsWithActions;
-use Filament\Actions\Contracts\HasActions;
-use Filament\Schemas\Concerns\InteractsWithSchemas;
-use Filament\Schemas\Contracts\HasSchemas;
-use Filament\Tables\Concerns\InteractsWithTable;
-use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Contracts\View\View;
+use Filament\Actions\BulkActionGroup;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
 use Illuminate\Database\Eloquent\Builder;
-use Livewire\Component;
+use Filament\Actions\Contracts\HasActions;
+use Filament\Schemas\Contracts\HasSchemas;
+use Filament\Tables\Concerns\InteractsWithTable;
+use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Schemas\Concerns\InteractsWithSchemas;
 
 class ListInventories extends Component implements HasActions, HasSchemas, HasTable
 {
@@ -26,7 +27,14 @@ class ListInventories extends Component implements HasActions, HasSchemas, HasTa
         return $table
             ->query(fn (): Builder => Inventory::query())
             ->columns([
-                //
+                TextColumn::make('item.name')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('quantity')
+                    ->sortable()
+                    ->badge(),
+                TextColumn::make('created_at')
+                    ->toggleable( isToggledHiddenByDefault: true ),
             ])
             ->filters([
                 //
