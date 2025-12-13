@@ -3,6 +3,7 @@
 namespace App\Livewire\Sales;
 
 use App\Models\Sale;
+use Filament\Tables\Columns\TextColumn;
 use Livewire\Component;
 use Filament\Tables\Table;
 use Filament\Actions\Action;
@@ -26,9 +27,24 @@ class ListSales extends Component implements HasActions, HasSchemas, HasTable
     public function table(Table $table): Table
     {
         return $table
-            ->query(fn (): Builder => Sale::query())
+            ->query(fn (): Builder => Sale::query()->with(['customer','saleItems']))
             ->columns([
-                //
+                TextColumn::make('customer.name')
+                ->sortable(),
+                TextColumn::make('saleItems.item.name')
+                ->label('Sold Items')
+                ->bulleted()
+                ->limitList(2)
+                ->expandableLimitedList(),
+                TextColumn::make('total')
+                ->money()
+                ->sortable(),
+                TextColumn::make('discount')
+                ->money(),
+                TextColumn::make('paid_amount')
+                ->money(),
+                TextColumn::make('paymentMethod.name'),
+
             ])
             ->filters([
                 //
@@ -38,14 +54,14 @@ class ListSales extends Component implements HasActions, HasSchemas, HasTable
             ])
             ->recordActions([
                 Action::make('delete')
-                    ->requiresConfirmation()
-                    ->color('danger')
-                    ->action(fn (Sale $record) => $record->delete())
-                    ->successNotification(
-                        Notification::make()
-                            ->title('Sale Deleted successfully')
-                            ->success()
-                    )
+                ->requiresConfirmation()
+                ->color('danger')
+                ->action(fn (Sale $record) => $record->delete())
+                ->successNotification(
+                     Notification::make()
+                        ->title('Sale Deleted successfully')
+                        ->success()
+                )
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
