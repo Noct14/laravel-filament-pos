@@ -51,16 +51,21 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-
+    //user
     Route::get('/manage-users',ListUsers::class)->name('users.index');
-
+    Route::get('/edit-user/{record}',EditUser::class)->name('user.update');
+    //inventory
     Route::get('/manage-items',ListItems::class)->name('items.index');
+    Route::get('/edit-item/{record}',EditItem::class)->name('items.update');
     Route::get('/manage-inventories',ListInventories::class)->name('inventories.index');
-
+    Route::get('/edit-inventory/{record}',EditInventory::class)->name('inventory.update');
+    //sales
     Route::get('/manage-sales',ListSales::class)->name('sales.index');
-
+    //customer
     Route::get('/manage-customers',ListCustomers::class)->name('customers.index');
-
+    Route::get('/edit-customer/{record}',EditCustomers::class)->name('customer.update');
+    //payment method
     Route::get('/manage-payment-methods',ListPaymentMethods::class)->name('payment.method.index');
+    Route::get('/edit-payment-method/{record}',EditPaymentMethod::class)->name('payment-method.update');
 
 });

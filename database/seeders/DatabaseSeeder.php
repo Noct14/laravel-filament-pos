@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Item::factory(10)->create();
-        // Inventory::factory(10)->create();
-        // Customer::factory(5)->create();
+        Item::factory(10)->create();
+        Inventory::factory(10)->create();
+        Customer::factory(5)->create();
         PaymentMethod::factory(3)->create();
     }
 }

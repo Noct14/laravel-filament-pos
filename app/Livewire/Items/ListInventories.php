@@ -48,12 +48,14 @@ class ListInventories extends Component implements HasActions, HasSchemas, HasTa
                 Action::make('delete')
                     ->requiresConfirmation()
                     ->color('danger')
-                    ->action(fn (Item $record) => $record->delete())
+                    ->action(fn (Inventory $record) => $record->delete())
                     ->successNotification(
                         Notification::make()
                             ->title('Inventory Deleted successfully')
                             ->success()
-                    )
+                    ),
+                Action::make('edit')
+                    ->url(fn (Inventory $record): string => route('inventory.update', $record))
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

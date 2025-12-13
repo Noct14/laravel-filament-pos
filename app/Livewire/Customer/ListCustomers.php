@@ -51,7 +51,9 @@ class ListCustomers extends Component implements HasActions, HasSchemas, HasTabl
                         Notification::make()
                             ->title('Customer Deleted successfully')
                             ->success()
-                    )
+                    ),
+                Action::make('edit')
+                    ->url(fn (Customer $record): string => route('customer.update', $record))
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

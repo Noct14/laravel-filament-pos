@@ -28,11 +28,11 @@
                     <flux:navlist.item icon="users" :href="route('customers.index')" :current="request()->routeIs('customers.index')"
                         wire:navigate>{{ __('Manage Customer') }}
                     </flux:navlist.item>
-                    <flux:navlist.item icon="user-group" :href="route('users.index')" :current="request()->routeIs('users.index')"
-                        wire:navigate>{{ __('Manage Users') }}
-                    </flux:navlist.item>
                     <flux:navlist.item icon="banknotes" :href="route('payment.method.index')" :current="request()->routeIs('payment.method.index')"
                         wire:navigate>{{ __('Manage Payment Methods') }}
+                    </flux:navlist.item>
+                    <flux:navlist.item icon="user-group" :href="route('users.index')" :current="request()->routeIs('users.index')"
+                        wire:navigate>{{ __('Manage Users') }}
                     </flux:navlist.item>
                 </flux:navlist.group>
 

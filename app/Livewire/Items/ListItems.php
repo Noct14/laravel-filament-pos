@@ -56,7 +56,11 @@ class ListItems extends Component implements HasActions, HasSchemas, HasTable
                         Notification::make()
                             ->title('Deleted successfully')
                             ->success()
-                    )
+                    ),
+
+                Action::make('edit')
+                    ->url(fn (Item $record): string => route('items.update', $record))
+                    // ->openUrlInNewTab()
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
