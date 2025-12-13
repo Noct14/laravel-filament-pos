@@ -20,7 +20,32 @@
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')"
+                        wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                </flux:navlist.group>
+
+                <flux:navlist.group :heading="__('Management')" class="grid">
+                    <flux:navlist.item icon="home" :href="route('customers.index')" :current="request()->routeIs('customers.index')"
+                        wire:navigate>{{ __('Manage Customer') }}
+                    </flux:navlist.item>
+                    <flux:navlist.item icon="home" :href="route('payment.method.index')" :current="request()->routeIs('payment.method.index')"
+                        wire:navigate>{{ __('Manage Payment Methods') }}
+                    </flux:navlist.item>
+                </flux:navlist.group>
+
+                <flux:navlist.group :heading="__('Inventory Management')" class="grid">
+                    <flux:navlist.item icon="home" :href="route('items.index')" :current="request()->routeIs('items.index')"
+                        wire:navigate>{{ __('Items') }}
+                    </flux:navlist.item>
+                    <flux:navlist.item icon="home" :href="route('inventories.index')" :current="request()->routeIs('inventories.index')"
+                        wire:navigate>{{ __('Inventory') }}
+                    </flux:navlist.item>
+                </flux:navlist.group>
+
+                <flux:navlist.group :heading="__('Sales')" class="grid">
+                    <flux:navlist.item icon="home" :href="route('sales.index')" :current="request()->routeIs('sales.index')"
+                        wire:navigate>{{ __('Sales') }}
+                    </flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

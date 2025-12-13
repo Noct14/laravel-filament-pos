@@ -1,5 +1,21 @@
 <?php
 
+use App\Livewire\Customer\CreateCustomer;
+use App\Livewire\Customer\EditCustomers;
+use App\Livewire\Customer\ListCustomers;
+use App\Livewire\Items\CreateInventory;
+use App\Livewire\Items\CreateItem;
+use App\Livewire\Items\EditInventory;
+use App\Livewire\Items\EditItem;
+use App\Livewire\Items\ListInventories;
+use App\Livewire\Items\ListItems;
+use App\Livewire\Management\CreatePaymentMethod;
+use App\Livewire\Management\CreateUser;
+use App\Livewire\Management\EditPaymentMethod;
+use App\Livewire\Management\EditUser;
+use App\Livewire\Management\ListPaymentMethods;
+use App\Livewire\Management\ListUsers;
+use App\Livewire\Sales\ListSales;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -32,4 +48,19 @@ Route::middleware(['auth'])->group(function () {
             ),
         )
         ->name('two-factor.show');
+});
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/manage-users',ListUsers::class)->name('users.index');
+
+    Route::get('/manage-items',ListItems::class)->name('items.index');
+    Route::get('/manage-inventories',ListInventories::class)->name('inventories.index');
+
+    Route::get('/manage-sales',ListSales::class)->name('sales.index');
+
+    Route::get('/manage-customers',ListCustomers::class)->name('customers.index');
+
+    Route::get('/manage-payment-methods',ListPaymentMethods::class)->name('payment.method.index');
+
 });
