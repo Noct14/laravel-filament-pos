@@ -40,7 +40,9 @@ class ListCustomers extends Component implements HasActions, HasSchemas, HasTabl
                 //
             ])
             ->headerActions([
-                //
+                Action::make('create')
+                ->label('Add New Customer')
+                ->url(fn() => route('customers.create'))
             ])
             ->recordActions([
                 Action::make('delete')
