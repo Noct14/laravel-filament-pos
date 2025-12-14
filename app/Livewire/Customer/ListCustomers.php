@@ -34,7 +34,19 @@ class ListCustomers extends Component implements HasActions, HasSchemas, HasTabl
                     ->searchable(),
                 TextColumn::make('email')
                     ->sortable(),
-                TextColumn::make('phone')
+                TextColumn::make('phone'),
+                TextColumn::make('created_at')
+                    ->label('Created')
+                    ->dateTime('d M Y')
+                    ->description(fn ($record) => $record->created_at->diffForHumans())
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                    ->label('Last Updated')
+                    ->dateTime('d M Y')
+                    ->description(fn ($record) => $record->updated_at->diffForHumans())
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

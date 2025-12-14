@@ -17,6 +17,10 @@ use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Schemas\Concerns\InteractsWithSchemas;
+use Illuminate\Support\Carbon;
+use Filament\Tables\Filters\Filter;
+use Filament\Forms\Components\DatePicker;
+
 
 class ListSales extends Component implements HasActions, HasSchemas, HasTable
 {
@@ -46,10 +50,60 @@ class ListSales extends Component implements HasActions, HasSchemas, HasTable
                     ->sortable()
                     ->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.')),
                 TextColumn::make('paymentMethod.name'),
-
+                TextColumn::make('created_at')
+                    ->label('Transaction Time')
+                    ->dateTime('d M Y H:i')
+                    ->description(fn ($record) => $record->created_at->diffForHumans())
+                    ->sortable(),
             ])
             ->filters([
-                //
+                Filter::make('transaction_time')
+                    ->label('Transaction Time')
+                    ->form([
+                        DatePicker::make('from')
+                            ->label('From')
+                            ->native(false),
+                        DatePicker::make('until')
+                            ->label('To')
+                            ->native(false),
+                    ])
+                    ->query(function ($query, array $data) {
+                        return $query
+                            ->when(
+                                $data['from'],
+                                fn ($q) => $q->whereDate('created_at', '>=', $data['from'])
+                            )
+                            ->when(
+                                $data['until'],
+                                fn ($q) => $q->whereDate('created_at', '<=', $data['until'])
+                            );
+                    })
+                    ->indicateUsing(function (array $data) {
+                        if (! $data['from'] && ! $data['until']) {
+                            return null;
+                        }
+
+                        return 'Transaction Time: ' .
+                            ($data['from'] ?? 'Any') .
+                            ' → ' .
+                            ($data['until'] ?? 'Any');
+                    }),
+
+                Filter::make('today')
+                    ->label('Today')
+                    ->query(fn ($query) =>
+                        $query->whereDate('created_at', today())
+                    ),
+
+
+                Filter::make('this_month')
+                    ->label('This Month')
+                    ->query(fn ($query) =>
+                        $query->whereBetween('created_at', [
+                            now()->startOfMonth(),
+                            now()->endOfMonth(),
+                        ])
+                    ),
             ])
             ->headerActions([
                 //
