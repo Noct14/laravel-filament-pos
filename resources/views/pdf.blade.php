@@ -143,8 +143,8 @@
             </table>
 
             <div class="summary">
-                Discount(%): {{ number_format($record->discount) }}<br>
-                Total: {{ 'Rp' }} {{ number_format($record->amount_paidf) }}
+                Discount: {{ number_format($record->discount) }}<br>
+                Total: {{ 'Rp' }} {{ number_format($record->total) }}
             </div>
 
             <hr>
