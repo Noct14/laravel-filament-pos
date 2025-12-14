@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('sale_id')->constrained()->cascadeOnDelete();
             $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->integer('quantity');
-            $table->decimal('price', 8, 2);
+            $table->unsignedInteger('price');
             $table->timestamps();
         });
     }

@@ -24,6 +24,10 @@
                         wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                 </flux:navlist.group>
 
+                <flux:navlist.item icon="shopping-bag" :href="route('pos')" :current="request()->routeIs('pos')"
+                    wire:navigate>{{ __('POS') }}
+                </flux:navlist.item>
+
                 <flux:navlist.group :heading="__('Management')" class="grid">
                     <flux:navlist.item icon="users" :href="route('customers.index')" :current="request()->routeIs('customers.index')"
                         wire:navigate>{{ __('Manage Customer') }}

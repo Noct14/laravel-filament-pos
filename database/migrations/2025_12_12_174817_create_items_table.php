@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('sku')->unique();
-            $table->decimal('price', 8, 2);
+            $table->unsignedInteger('price');
             $table->enum('status',['active','inactive'])->default('active');
             // add fields images, variations
             $table->timestamps();

@@ -1,27 +1,28 @@
 <?php
 
-use App\Livewire\Customer\CreateCustomer;
+use App\Livewire\POS;
+use Laravel\Fortify\Features;
+use App\Livewire\Items\EditItem;
+use App\Livewire\Items\ListItems;
+use App\Livewire\Sales\ListSales;
+use App\Livewire\Items\CreateItem;
+use App\Livewire\Settings\Profile;
+use App\Livewire\Settings\Password;
+use App\Livewire\Settings\TwoFactor;
+use App\Livewire\Items\EditInventory;
+use App\Livewire\Management\EditUser;
+use App\Livewire\Settings\Appearance;
+use Illuminate\Support\Facades\Route;
+use App\Livewire\Management\ListUsers;
+use App\Livewire\Items\CreateInventory;
+use App\Livewire\Items\ListInventories;
+use App\Livewire\Management\CreateUser;
 use App\Livewire\Customer\EditCustomers;
 use App\Livewire\Customer\ListCustomers;
-use App\Livewire\Items\CreateInventory;
-use App\Livewire\Items\CreateItem;
-use App\Livewire\Items\EditInventory;
-use App\Livewire\Items\EditItem;
-use App\Livewire\Items\ListInventories;
-use App\Livewire\Items\ListItems;
-use App\Livewire\Management\CreatePaymentMethod;
-use App\Livewire\Management\CreateUser;
+use App\Livewire\Customer\CreateCustomer;
 use App\Livewire\Management\EditPaymentMethod;
-use App\Livewire\Management\EditUser;
 use App\Livewire\Management\ListPaymentMethods;
-use App\Livewire\Management\ListUsers;
-use App\Livewire\Sales\ListSales;
-use App\Livewire\Settings\Appearance;
-use App\Livewire\Settings\Password;
-use App\Livewire\Settings\Profile;
-use App\Livewire\Settings\TwoFactor;
-use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Features;
+use App\Livewire\Management\CreatePaymentMethod;
 
 Route::get('/', function () {
     return view('welcome');
@@ -72,5 +73,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create-payment-method',CreatePaymentMethod::class)->name('payment-method.create');
     Route::get('/manage-payment-methods',ListPaymentMethods::class)->name('payment.method.index');
     Route::get('/edit-payment-method/{record}',EditPaymentMethod::class)->name('payment-method.update');
+
+    Route::get('/pos',POS::class)->name('pos');
 
 });

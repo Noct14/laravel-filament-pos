@@ -20,7 +20,7 @@ class ItemFactory extends Factory
         return [
             'name' => $this->faker->words(2, true),
             'sku' => Str::upper(Str::random(10)),
-            'price' => $this->faker->randomFloat(2, 5, 50),
+            'price' => $this->faker->numberBetween(10, 1000) * 1000,
             'status' => 'active',
         ];
     }

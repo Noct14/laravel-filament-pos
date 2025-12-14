@@ -37,7 +37,7 @@ class ListItems extends Component implements HasActions, HasSchemas, HasTable
                     ->sortable(),
                 TextColumn::make('price')
                     ->sortable()
-                    ->money('IDR'),
+                    ->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.')),
                 TextColumn::make('status')
                     ->badge(),
             ])
