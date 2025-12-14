@@ -135,16 +135,16 @@
                             <td>{{ $index + 1 }}</td>
                             <td>{{ \Illuminate\Support\Str::limit($line->item->name, 10) }}</td>
                             <td>{{ $line->quantity }}</td>
-                            <td>{{ 'Rp' }} {{ number_format($line->price, 2) }}</td>
-                            <td>{{ 'Rp' }} {{ number_format($line->quantity * $line->price, 2) }}</td>
+                            <td>{{ 'Rp' }} {{ number_format($line->price) }}</td>
+                            <td>{{ 'Rp' }} {{ number_format($line->quantity * $line->price) }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
 
             <div class="summary">
-                Discount(%): {{ number_format($record->discount, 2) }}<br>
-                Total: {{ 'Rp' }} {{ number_format($record->amount_paid, 2) }}
+                Discount(%): {{ number_format($record->discount) }}<br>
+                Total: {{ 'Rp' }} {{ number_format($record->amount_paidf) }}
             </div>
 
             <hr>
