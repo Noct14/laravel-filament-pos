@@ -126,17 +126,23 @@
                         },
                         init() {
                             this.$watch('$wire.discount_amount', value => {
-                                if (value && typeof value === 'number') {
+                                if (value && typeof value === 'number' && value > 0) {
                                     this.$el.value = this.formatNum(value);
+                                } else {
+                                    this.$el.value = '';
+                                    $wire.$set('discount_amount', 0);
                                 }
                             });
-                            if (this.$wire.discount_amount) {
+                            if (this.$wire.discount_amount && this.$wire.discount_amount > 0) {
                                 this.$el.value = this.formatNum(this.$wire.discount_amount);
+                            } else {
+                                this.$el.value = '';
+                                $wire.$set('discount_amount', 0);
                             }
                         }
                     }"
-                    x-on:input="let clean = $event.target.value.replace(/[^\d]/g, ''); if(clean) { let formatted = formatNum(parseInt(clean)); $event.target.value = formatted; $wire.$set('discount_amount', parseInt(clean)); } else { $event.target.value = ''; $wire.$set('discount_amount', 0); }"
-                    x-on:blur="let clean = $event.target.value.replace(/[^\d]/g, ''); $wire.$set('discount_amount', clean ? parseInt(clean) : 0);"
+                    x-on:input="let clean = $event.target.value.replace(/[^\d]/g, ''); if(clean && parseInt(clean) > 0) { let formatted = formatNum(parseInt(clean)); $event.target.value = formatted; $wire.$set('discount_amount', parseInt(clean)); } else { $event.target.value = ''; $wire.$set('discount_amount', 0); }"
+                    x-on:blur="let clean = $event.target.value.replace(/[^\d]/g, ''); if(clean && parseInt(clean) > 0) { $wire.$set('discount_amount', parseInt(clean)); } else { $event.target.value = ''; $wire.$set('discount_amount', 0); }"
                     x-on:keypress="if(!/[0-9]/.test($event.key) && !['Backspace','Delete','Tab','ArrowLeft','ArrowRight'].includes($event.key)) $event.preventDefault();">
             </div>
 

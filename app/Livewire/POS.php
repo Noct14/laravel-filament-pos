@@ -91,11 +91,7 @@ class POS extends Component
     #[Computed]
     public function total()
     {
-        $discountAmount = is_string($this->discount_amount) 
-            ? (int) str_replace('.', '', $this->discount_amount) 
-            : (int) $this->discount_amount;
-        
-        $discountedTotal = $this->totalBeforeDiscount - $discountAmount;
+        $discountedTotal = $this->totalBeforeDiscount - $this->discount_amount;
 
         return $discountedTotal;
     }
@@ -103,16 +99,11 @@ class POS extends Component
     #[Computed]
     public function change()
     {
-        $paidAmount = is_string($this->paid_amount) 
-            ? (int) str_replace('.', '', $this->paid_amount) 
-            : (int) $this->paid_amount;
-        
-        if ($paidAmount > $this->total) {
-            return $paidAmount - $this->total;
+        if ($this->paid_amount > $this->total) {
+            return $this->paid_amount - $this->total;
         }
         return 0;
     }
-
 
     public function addToCart($itemId)
     {
@@ -188,17 +179,8 @@ class POS extends Component
             return;
         }
 
-        // Clean format from discount_amount and paid_amount
-        $discountAmount = is_string($this->discount_amount) 
-            ? (int) str_replace('.', '', $this->discount_amount) 
-            : (int) $this->discount_amount;
-        
-        $paidAmount = is_string($this->paid_amount) 
-            ? (int) str_replace('.', '', $this->paid_amount) 
-            : (int) $this->paid_amount;
-
         //basic validation for paid amount
-        if ($paidAmount < $this->total) {
+        if ($this->paid_amount < $this->total) {
             Notification::make()
             ->title('Failed Sale!')
             ->body('Paid Amount is less than total!')
@@ -216,10 +198,10 @@ class POS extends Component
         //create a sale
         $sale = Sale::create([
             'total' => $this->total,
-            'paid_amount' => $paidAmount,
+            'paid_amount' => $this->paid_amount,
             'customer_id' => $this->customer_id,
             'payment_method_id' => $this->payment_method_id,
-            'discount' => $discountAmount
+            'discount' => $this->discount_amount
         ]);
 
         // create the sale items
