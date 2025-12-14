@@ -135,8 +135,8 @@
                             <td>{{ $index + 1 }}</td>
                             <td>{{ \Illuminate\Support\Str::limit($line->item->name, 10) }}</td>
                             <td>{{ $line->quantity }}</td>
-                            <td>{{ 'TZS' }} {{ number_format($line->price, 2) }}</td>
-                            <td>{{ 'TZS' }} {{ number_format($line->quantity * $line->price, 2) }}</td>
+                            <td>{{ 'Rp' }} {{ number_format($line->price, 2) }}</td>
+                            <td>{{ 'Rp' }} {{ number_format($line->quantity * $line->price, 2) }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -144,13 +144,13 @@
 
             <div class="summary">
                 Discount(%): {{ number_format($record->discount, 2) }}<br>
-                Total: {{ 'TZS' }} {{ number_format($record->amount_paid, 2) }}
+                Total: {{ 'Rp' }} {{ number_format($record->amount_paid, 2) }}
             </div>
 
             <hr>
         @endforeach
 
     </div>
-    
+
 </body>
 </html>
