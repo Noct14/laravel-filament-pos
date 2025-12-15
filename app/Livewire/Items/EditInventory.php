@@ -35,8 +35,8 @@ class EditInventory extends Component implements HasActions, HasSchemas
     {
         return $schema
             ->components([
-                Section::make('Edit Payment Method')
-                ->description('update the payment method details as you wish!!')
+                Section::make('Edit Inventory')
+                ->description('update the Inventory quantity as you wish!!')
                 ->columns(2)
                 ->schema([
                     Select::make('item_id')

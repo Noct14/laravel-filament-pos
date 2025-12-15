@@ -31,6 +31,125 @@
 
 ---
 
+## 📸 Screenshots
+
+### Dashboard
+![Dashboard](screenshots/dashboard1.png)
+![Dashboard](screenshots/dashboard2.png)
+
+### POS
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="screenshots/POS.png" width="700">
+    </td>
+  </tr>
+</table>
+
+
+### Customer
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>List Customer</strong><br>
+      <img src="screenshots/listCustomer.png" width="500">
+    </td>
+    <td align="center">
+      <strong>Edit Customer</strong><br>
+      <img src="screenshots/editCustomer.png" width="500">
+    </td>
+  </tr>
+</table>
+
+### Payment Method Management
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>List Payment Method</strong><br>
+      <img src="screenshots/listPayment.png" width="500">
+    </td>
+    <td align="center">
+      <strong>Edit Payment Method</strong><br>
+      <img src="screenshots/editPayment.png" width="500">
+    </td>
+  </tr>
+</table>
+
+### Users Management
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>List Users</strong><br>
+      <img src="screenshots/listUser.png" width="500">
+    </td>
+    <td align="center">
+      <strong>Edit Users</strong><br>
+      <img src="screenshots/editUser.png" width="500">
+    </td>
+  </tr>
+</table>
+
+### Items Management
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>List Items</strong><br>
+      <img src="screenshots/listItems.png" width="500">
+      <>
+    </td>
+    <td align="center">
+      <strong>Edit Items</strong><br>
+      <img src="screenshots/editItems.png" width="500">
+    </td>
+  </tr>
+</table>
+
+
+> **Note:**  
+> The Items list is paginated with **10 items per page by default**.
+
+### Inventory Management
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>List Inventory</strong><br>
+      <img src="screenshots/listInventory.png" width="500">
+      <>
+    </td>
+    <td align="center">
+      <strong>Edit Inventory</strong><br>
+      <img src="screenshots/editInventory.png" width="500">
+    </td>
+  </tr>
+</table>
+
+
+> **Note:**  
+> The Inventory list is paginated with **10 items per page by default**.
+
+### Details Sales
+![Sales](screenshots/sales.png)
+
+<table>
+  <tr>
+    <td align="left">
+      <strong>Sales Filter</strong><br>
+      <img src="screenshots/salesFilter.png" width="400">
+    </td>
+  </tr>
+</table>
+
+> **Note:**  
+> The Sales list is paginated with **10 items per page by default**.
+
+---
+
 ## Installation & Setup
 
 ### 1. Clone Repository

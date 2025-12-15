@@ -36,7 +36,6 @@ class EditPaymentMethod extends Component implements HasActions, HasSchemas
             ->components([
                Section::make('Edit Payment Method')
                 ->description('update the payment method details as you wish!!')
-                ->columns(2)
                 ->schema([
                     TextInput::make('name'),
                     Textarea::make('description')

@@ -31,8 +31,8 @@ class CreateInventory extends Component implements HasActions, HasSchemas
     {
         return $schema
             ->components([
-                Section::make('Add Payment Method')
-                ->description('Add the payment method details')
+                Section::make('Add Inventory')
+                ->description('Add the Inventory quantity')
                 ->columns(2)
                 ->schema([
                     Select::make('item_id')

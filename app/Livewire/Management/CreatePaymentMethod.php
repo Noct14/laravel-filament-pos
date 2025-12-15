@@ -34,7 +34,6 @@ class CreatePaymentMethod extends Component implements HasActions, HasSchemas
             ->components([
                  Section::make('Create Payment Method')
                 ->description('Fill new payment method details')
-                ->columns(2)
                 ->schema([
                     TextInput::make('name'),
                     Textarea::make('description')
