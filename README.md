@@ -1,76 +1,98 @@
-# Laravel POS System
+<h1 align="center"> RetailPOS </h1>
 
-A modern Point of Sale (POS) application built with **Laravel 12** and **Livewire**. This application is designed to help small to medium businesses manage sales, inventory, and customers efficiently.
+![Laravel POS System](screenshots/showcase.png)
 
-## 🚀 Features
+<p align="center">
+  A modern Point of Sale application built to help small businesses manage sales, inventory, and customers efficiently.
+</p>
 
-*   **Point of Sale (POS)**: Streamlined checkout interface for quick transactions.
+## Features
+
+*   **Point of Sale (POS)**: Streamlined checkout interface for quick transactions
 *   **Inventory Management**:
     *   Manage Items (Products)
-    *   Track Stock Levels (Inventories)
+    *   Track real-time Stock Levels
 *   **Sales Management**:
-    *   View Sales History
-    *   Print Receipts (PDF)
-*   **Customer Management**: CRM features to track customer data.
-*   **User Management**: Role-based access for Admins and Staff.
-*   **Settings**:
-    *   Profile & Password Management
-    *   Two-Factor Authentication (2FA)
-    *   Payment Method Configuration
+    *   Complete Sales History
+    *   Printable Receipts
+*   **Customer Management**: CRM to track customer details and purchase history
+*   **User Management**: Role-based access control (Admins & Staff)
+*   **Authentication**: Secure login and Two-Factor Authentication (2FA) support
 
-## 🛠️ Tech Stack
+---
 
-*   **Framework**: [Laravel 12](https://laravel.com)
-*   **Frontend**: [Livewire](https://livewire.laravel.com)
-*   **UI Components**: [Filament](https://filamentphp.com) (Forms, Tables, Actions)
-*   **Database**: MySQL / SQLite (Configurable)
+## Tech Stack
 
-## 📦 Installation
+[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![Filament](https://img.shields.io/badge/Filament-FAA025?style=for-the-badge&logo=filament&logoColor=white)](https://filamentphp.com)
+[![Livewire](https://img.shields.io/badge/Livewire-4E56A6?style=for-the-badge&logo=livewire&logoColor=white)](https://livewire.laravel.com)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/yourusername/laravel-pos.git
-    cd laravel-pos
-    ```
+---
 
-2.  **Install PHP dependencies**
-    ```bash
-    composer install
-    ```
+## Installation & Setup
 
-3.  **Install Node.js dependencies**
-    ```bash
-    npm install
-    ```
+### 1. Clone Repository
 
-4.  **Environment Setup**
-    Copy the example environment file and configure your database settings.
-    ```bash
-    cp .env.example .env
-    ```
-    Edit `.env` file to match your database credentials.
+```bash
+git clone https://github.com/yourusername/laravel-pos.git
+cd laravel-pos
+```
 
-5.  **Generate Application Key**
-    ```bash
-    php artisan key:generate
-    ```
+### 2. Install Dependencies
 
-6.  **Run Migrations**
-    Set up the database tables.
-    ```bash
-    php artisan migrate
-    ```
-    *(Optional: Run seeders if available)*
-    ```bash
-    php artisan db:seed
-    ```
+**PHP Dependencies:**
+```bash
+composer install
+```
 
-7.  **Build Assets & Run**
-    ```bash
-    npm run build
-    php artisan serve
-    ```
+**Node.js Dependencies:**
+```bash
+npm install
+```
 
-## 📄 License
+### 3. Environment Setup
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cp .env.example .env
+```
+Update your `.env` file with your database credentials:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=retail_pos
+DB_USERNAME=username
+DB_PASSWORD=password
+```
+
+### 4. Application Setup
+
+**Generate Key:**
+```bash
+php artisan key:generate
+```
+
+**Run Migrations:**
+```bash
+php artisan migrate
+```
+
+### 5. Start Application
+
+**Build Assets:**
+```bash
+npm run build
+```
+
+**Start Server:**
+```bash
+php artisan serve
+```
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.

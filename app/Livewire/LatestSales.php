@@ -80,7 +80,8 @@ class LatestSales extends TableWidget
     public function table(Table $table): Table
     {
         return $table
-             ->query(fn (): Builder => Sale::query()->with(['customer','saleItems']))
+            ->query(fn (): Builder => Sale::query()->with(['customer','saleItems']))
+            ->defaultPaginationPageOption(5)
             ->columns([
                 TextColumn::make('customer.name')
                     ->sortable(),

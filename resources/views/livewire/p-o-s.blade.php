@@ -26,10 +26,10 @@
                     <div class="bg-white dark:bg-neutral-800 rounded-2xl shadow-lg overflow-hidden
                                          transition-all duration-200 transform hover:scale-105 hover:shadow-xl">
                         <div class="p-4">
-                            <div
+                            {{-- <div
                                 class="w-full h-32 bg-gray-200 dark:bg-neutral-700 rounded-lg mb-3 flex items-center justify-center text-gray-400">
                                 <span class="text-sm">Item Image</span>
-                            </div>
+                            </div> --}}
                             <h3 class="font-semibold text-gray-900 dark:text-gray-100 truncate">{{ $item->name }}</h3>
                             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">SKU: {{ $item->sku }}</p>
                             <p class="text-sm text-gray-700 dark:text-gray-300 mt-1 font-bold">
@@ -119,10 +119,10 @@
                         focus:border-blue-500 focus:ring-blue-500
                         dark:bg-neutral-900 dark:border-neutral-700
                         dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                    x-data="{ 
-                        formatNum(val) { 
-                            let str = val.toString(); 
-                            return str.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); 
+                    x-data="{
+                        formatNum(val) {
+                            let str = val.toString();
+                            return str.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
                         },
                         init() {
                             this.$watch('$wire.discount_amount', value => {
@@ -184,10 +184,10 @@
                        focus:border-blue-500 focus:ring-blue-500 mb-4
                        dark:bg-neutral-900 dark:border-neutral-700
                        dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                x-data="{ 
-                    formatNum(val) { 
-                        let str = val.toString(); 
-                        return str.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); 
+                x-data="{
+                    formatNum(val) {
+                        let str = val.toString();
+                        return str.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
                     },
                     init() {
                         this.$watch('$wire.paid_amount', value => {
